@@ -13,7 +13,7 @@ formUsuario.addEventListener('submit', async (event) => {
     const data = Object.fromEntries(formData.entries());
 
     try {
-        const response = await fetch('http://3.145.30.157:3007/api/usuario/registrar', {
+        const response = await fetch('http://3.82.138.154:3000/api/usuario/registrar', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -49,7 +49,7 @@ formPokemon.addEventListener('submit', async (event) => {
     const data = Object.fromEntries(formData.entries());
 
     try {
-        const response = await fetch('http://3.145.30.157:3007/api/pokemon/registrar', {
+        const response = await fetch('http://3.82.138.154:3000/api/pokemon/registrar', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -91,7 +91,7 @@ async function capturarPokemon(pokemonId) {
     };
 
     try {
-        const response = await fetch('http://3.145.30.157:3007/api/captura/capturar', {
+        const response = await fetch('http://3.82.138.154:3000/api/captura/capturar', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -123,7 +123,7 @@ async function capturarPokemon(pokemonId) {
 
 async function actualizarTablaCapturas() {
     try {
-        const response = await fetch('http://3.145.30.157:3007/api/captura/listar');  // Suponiendo que la API devuelva las capturas
+        const response = await fetch('http://3.82.138.154:3000/api/captura/listar');  // Suponiendo que la API devuelva las capturas
         const capturas = await response.json();
 
         if (!response.ok) {
@@ -154,7 +154,7 @@ const tablaCapturas = document.getElementById('tablaCapturas').getElementsByTagN
 // Función para obtener y mostrar Pokémon
 async function obtenerPokemones() {
     try {
-      const response = await fetch('http://3.145.30.157:3007/api/pokemon/listar');
+      const response = await fetch('http://3.82.138.154:3000/api/pokemon/listar');
       const data = await response.json();
   
       if (data.pokemones) {
@@ -177,7 +177,7 @@ async function obtenerPokemones() {
   // Función para obtener y mostrar las capturas
   async function obtenerCapturas() {
     try {
-        const response = await fetch('http://3.145.30.157:3007/api/captura/listar');
+        const response = await fetch('http://3.82.138.154:3000/api/captura/listar');
         const data = await response.json();
 
         if (data.capturado) {  
