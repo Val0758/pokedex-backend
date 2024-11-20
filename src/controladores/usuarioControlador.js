@@ -31,44 +31,60 @@ const validadorRegistro = Joi.object({
     })
 });
 
+// Registrar un usuario
 const registrarUsuario = async (req, res) => {
   try {
     const { error } = validadorRegistro.validate(req.body, { abortEarly: true });
 
     if (error) {
-      const mensajesErrores = error.details.map(detail => detail.message).join('|');//map == mapear objeto o recorrer arreglo objetos y guarda los errores
-      return res.status(400).json({mensaje: 'Errores en la validacion',
+      const mensajesErrores = error.details.map(detail => detail.message).join('|');
+      return res.status(400).json({
+        mensaje: 'Errores en la validación',
         resultado: {
-          cedula:'',
-          email:'',
-          nombre:'',
-          edad:'',
+          cedula: '',
+          email: '',
+          nombre: '',
+          edad: '',
           erroresValidacion: mensajesErrores
-        }});
+        }
+      });
     }
 
-    const { cedula, email, nombre, edad} = req.body;
-    
+    const { cedula, email, nombre, edad } = req.body;
     const usuarioExistente = await Usuario.findByPk(cedula);
-    
+
     if (usuarioExistente) {
-      return res.status(400).json({ mensaje: 'El usuario ya existe',resultado:null });
+      return res.status(400).json({ mensaje: 'El usuario ya existe', resultado: null });
     }
 
     const nuevoUsuario = await Usuario.create({ cedula, email, nombre, edad });
-    res.status(201).json({ mensaje:'Usuario creado',
+    res.status(201).json({
+      mensaje: 'Usuario creado',
       resultado: {
-        cedula:nuevoUsuario.cedula,
-        email:nuevoUsuario.email,
-        nombre:nuevoUsuario.nombre,
-        edad:nuevoUsuario.edad,
+        cedula: nuevoUsuario.cedula,
+        email: nuevoUsuario.email,
+        nombre: nuevoUsuario.nombre,
+        edad: nuevoUsuario.edad,
         erroresValidacion: ''
-      }});
+      }
+    });
   } catch (error) {
-    res.status(400).json({ mensaje: error.message,resultado:null});
+    res.status(400).json({ mensaje: error.message, resultado: null });
+  }
+};
+
+// Listar todos los usuarios
+const listarUsuarios = async (req, res) => {
+  try {
+    const usuarios = await Usuario.findAll(); // Recuperar todos los usuarios de la base de datos
+    res.status(200).json({ usuarios });
+  } catch (error) {
+    console.error('Error al listar usuarios:', error);
+    res.status(500).json({ mensaje: 'Error interno del servidor', resultado: null });
   }
 };
 
 module.exports = {
-    registrarUsuario
+  registrarUsuario,
+  listarUsuarios
 };
