@@ -1,26 +1,30 @@
 module.exports = (sequelize, DataTypes) => {
-  return sequelize.define('PokemonCapturado', {
+  return sequelize.define('Capturado', {
       id: {
           type: DataTypes.INTEGER,
           primaryKey: true,
           autoIncrement: true
-        },
-        pokemonId: {
-          type: DataTypes.INTEGER,
-          references: {
-            model: 'pokemon',
-            key: 'id'
-          }
-        },
-        usuarioCedula: {
+      },
+      usuarioCedula: {
           type: DataTypes.STRING,
+          allowNull: false,
           references: {
-            model: 'usuario',
-            key: 'cedula'
+              model: 'usuarios',
+              key: 'cedula'
           }
-        }
+      },
+      pokemonId: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+          references: {
+              model: 'pokemones',
+              key: 'id'
+          }
+      },
+      createdAt: DataTypes.DATE,
+      updatedAt: DataTypes.DATE
   }, {
-    tableName: 'pokemoncapturado',
-    timestamps: true,
+      tableName: 'capturados',
+      timestamps: true
   });
 };

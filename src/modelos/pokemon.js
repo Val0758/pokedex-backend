@@ -7,19 +7,18 @@ module.exports = (sequelize, DataTypes) => {
         },
         nombre: {
             type: DataTypes.STRING,
-            allowNull: false,
-            unique: 'nombre'
+            allowNull: false
         },
         tipo: {
             type: DataTypes.STRING,
             allowNull: false
-        },        
+        },
         poder: {
             type: DataTypes.STRING,
             allowNull: false
         }
     }, {
-        tableName: 'pokemon',
-        timestamps: false
+        tableName: 'pokemones',
+        timestamps: true
     });
 };

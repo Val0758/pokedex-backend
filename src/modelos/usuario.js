@@ -2,14 +2,14 @@ module.exports = (sequelize, DataTypes) => {
     return sequelize.define('Usuario', {
         cedula: {
             type: DataTypes.STRING,
-            primaryKey: true,
-            allowNull: false,
-            unique: 'cedula'
+            primaryKey: true
         },
         email: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: 'email'
+            validate: {
+                isEmail: true
+            }
         },
         nombre: {
             type: DataTypes.STRING,
@@ -17,10 +17,14 @@ module.exports = (sequelize, DataTypes) => {
         },
         edad: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            validate: {
+                min: 18,
+                max: 100
+            }
         }
     }, {
-        tableName: 'usuario',
+        tableName: 'usuarios',
         timestamps: true
     });
 };
