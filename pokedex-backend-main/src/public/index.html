@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juego Pokémon</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', 'Cambria', Cochin, Georgia, Times, 'Times New Roman', serif;
+      background-color: #ffe6f0;
+      color: #4d004d;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #ff66b2;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      font-weight: bold;
+      text-shadow: 2px 2px #ffb3d9;
+    }
+
+    h2 {
+      font-size: 1.8em;
+      margin-top: 0;
+    }
+
+    section {
+      background-color: #ffe6ff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'Comic Sans MS', 'Cambria', Cochin, Georgia, Times, 'Times New Roman', serif;
+      margin-top: 10px;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ffb3d9;
+    }
+
+    th {
+      background-color: #ffb3d9;
+      color: #4d004d;
+      font-weight: bold;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #ffe6f0;
+    }
+
+    input[type="text"], input[type="email"], input[type="number"] {
+      width: 95%;
+      padding: 8px;
+      margin: 4px 0;
+      border-radius: 8px;
+      border: 1px solid #ff66b2;
+      background-color: #fff0f5;
+    }
+
+    button {
+      background-color: #ff66b2;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1em;
+      transition: background-color 0.3s;
+      margin: 10px auto;
+      display: block;
+    }
+
+    button:hover {
+      background-color: #ff4d94;
+    }
+
+    #resultadoUsuario, #resultadoPokemon, #resultadoCaptura {
+      color: #b30047;
+      text-align: center;
+      margin-top: 10px;
+      font-style: italic;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Juego Pokémon</h1>
+
+  <!-- Registro de Usuario -->
+  <section>
+    <h2>Registrar Usuario</h2>
+    <form id="formUsuario">
+      <table>
+        <tr>
+          <td><label for="cedula">Cédula:</label></td>
+          <td><input type="text" id="cedula" name="cedula" required></td>
+        </tr>
+        <tr>
+          <td><label for="email">Email:</label></td>
+          <td><input type="email" id="email" name="email" required></td>
+        </tr>
+        <tr>
+          <td><label for="nombre">Nombre:</label></td>
+          <td><input type="text" id="nombre" name="nombre" required></td>
+        </tr>
+        <tr>
+          <td><label for="edad">Edad:</label></td>
+          <td><input type="number" id="edad" name="edad" required></td>
+        </tr>
+        <tr>
+          <td colspan="2"><button type="submit">Registrar Usuario</button></td>
+        </tr>
+      </table>
+    </form>
+    <div id="resultadoUsuario">¡Usuario registrado exitosamente!</div> <!-- Mensaje de resultado de usuario -->
+  </section>
+
+  <!-- Registro de Pokémon -->
+  <section>
+    <h2>Registrar Pokémon</h2>
+    <form id="formPokemon">
+      <table>
+        <tr>
+          <td><label for="nombrePokemon">Nombre del Pokémon:</label></td>
+          <td><input type="text" id="nombrePokemon" name="nombre" required></td>
+        </tr>
+        <tr>
+          <td><label for="tipo">Tipo:</label></td>
+          <td><input type="text" id="tipo" name="tipo" required></td>
+        </tr>
+        <tr>
+          <td><label for="poder">Poder:</label></td>
+          <td><input type="text" id="poder" name="poder" required></td>
+        </tr>
+        <tr>
+          <td colspan="2"><button type="submit">Registrar Pokémon</button></td>
+        </tr>
+      </table>
+    </form>
+    <div id="resultadoPokemon">¡Pokémon registrado exitosamente!</div> <!-- Mensaje de resultado de Pokémon -->
+  </section>
+
+  <!-- Listado de Pokémon y Capturas -->
+  <section>
+    <h2>Listado de Pokémon</h2>
+    <table id="tablaPokemon">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Poder</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Los Pokémon registrados se añadirán dinámicamente aquí -->
+        </tbody>
+    </table>
+  </section>
+
+  <!-- Listado de Pokémon Capturados -->
+  <section>
+    <h2>Listado de Pokémon Capturados</h2>
+    <table id="tablaCapturas">
+        <thead>
+            <tr>
+                <th>Pokemon Id</th>
+                <th>Usuario</th>
+                <th>Fecha atrapada</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Los Pokémon capturados se añadirán dinámicamente aquí -->
+        </tbody>
+    </table>
+  </section>
+
+  <!-- Mensaje de resultado de captura -->
+  <div id="resultadoCaptura">¡Pokémon capturado exitosamente!</div> 
+
+  <!-- Agregar el script.js -->
+  <script src="script.js"></script>
+
+</body>
+</html>
