@@ -12,7 +12,7 @@ const capturaRutas = require('./rutas/rutasCapturados');  // Rutas de Capturas
 // Middleware
 app.use(express.json());  // Para analizar las solicitudes JSON
 app.use(cors());  // Permitir solicitudes CORS
-app.use(express.static(path.join(__dirname, 'vistas')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/home', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
