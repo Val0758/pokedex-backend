@@ -15,7 +15,7 @@ app.use(cors());  // Permitir solicitudes CORS
 app.use(express.static(path.join(__dirname, 'vistas')));
 
 app.get('/home', (req, res) => {
-  res.sendFile(path.join(__dirname, 'vistas', 'index2.html'));
+  res.sendFile(path.join(__dirname, 'vistas', 'index.html'));
 });
 
 // Rutas de la API
