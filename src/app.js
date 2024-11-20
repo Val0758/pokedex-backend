@@ -7,11 +7,11 @@ const path = require('path');
 // Middleware
 app.use(express.json()); // Permite analizar solicitudes JSON
 app.use(cors()); // Habilita solicitudes CORS
-app.use(express.static(path.join(__dirname))); // Define la carpeta actual como estática
+app.use(express.static(path.join(__dirname,'public'))); // Define la carpeta actual como estática
 
 // Ruta para servir el archivo HTML principal
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname,'public', 'index.html'));
 });
 
 // Importar rutas de la API
