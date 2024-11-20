@@ -8,7 +8,7 @@ const tablaPokemon = document.getElementById('tablaPokemon').getElementsByTagNam
 const tablaCapturas = document.getElementById('tablaCapturas').getElementsByTagName('tbody')[0];
 
 // URL Base de la API
-const API_BASE_URL = 'http://3.145.30.157:3007/api';
+const API_BASE_URL = 'http://3.82.138.154:3000/api';
 
 // Función para Mostrar Mensajes de Resultado
 function mostrarMensaje(elemento, mensaje, color = 'red') {
